@@ -14,7 +14,6 @@
 
 # # Clone the repository
 # GITHUB_REPO="https://github.com/ishapuri/probabilistic_inference_scaling.git"
-# GITHUB_TOKEN="***REMOVED***"
 
 # echo "Cloning the repository..."
 # git clone https://$GITHUB_TOKEN@${GITHUB_REPO#https://} || { echo "Failed to clone repository"; exit 1; }
