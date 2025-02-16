@@ -1,5 +1,5 @@
 NUM_PARTICLES=(32 16 8 4 2 1 64 128)
-HF_TOKEN=
+HF_TOKEN={Your HF Token}
 
 
 for P in ${NUM_PARTICLES[@]}; do
