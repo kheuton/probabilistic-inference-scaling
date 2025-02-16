@@ -1,7 +1,9 @@
 NUM_PARTICLES=(32 16 8 4 2 1 64 128)
+HF_TOKEN=
+
 
 for P in ${NUM_PARTICLES[@]}; do
-HF_TOKEN=***REMOVED***  python /new_data/probabilistic_inference_scaling/probabilistic_inference_scaling/scripts/pg.py \
+HF_TOKEN={HF_TOKEN}  python /new_data/probabilistic_inference_scaling/probabilistic_inference_scaling/scripts/pg.py \
         --total-timesteps 1 \
         --n-particles $P \
         --dataset-start 0 \
