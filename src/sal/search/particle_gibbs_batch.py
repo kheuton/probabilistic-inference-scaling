@@ -103,7 +103,8 @@ def take_a_step(question, llm, config, steps_so_far=[], first=False, temperature
         )
     else:
         prompt = tokenizer.apply_chat_template(
-            system + [{"role": "user", "content": question}], tokenize=False
+            system + [{"role": "user", "content": question}], tokenize=False,
+            add_generation_prompt=True,
         )
         prompt = prompt + "\n\n".join(steps_so_far) + "\n\n"
 
@@ -144,7 +145,8 @@ def take_a_step_for_batch(question, llm, config, particles_steps_so_far=[[]], fi
             )
         else:
             prompt = tokenizer.apply_chat_template(
-                system + [{"role": "user", "content": question}], tokenize=False
+                system + [{"role": "user", "content": question}], tokenize=False,
+                add_generation_prompt=True,
             )
             prompt = prompt + "\n\n".join(particles_steps_so_far[0]) + "\n\n"
         
@@ -156,11 +158,13 @@ def take_a_step_for_batch(question, llm, config, particles_steps_so_far=[[]], fi
         for steps_so_far in particles_steps_so_far:
             if first:   
                 prompt = tokenizer.apply_chat_template(
-                    system + [{"role": "user", "content": question}], tokenize=False
+                    system + [{"role": "user", "content": question}], tokenize=False,
+                    add_generation_prompt=True,
                 )
             else:
                 prompt = tokenizer.apply_chat_template(
-                    system + [{"role": "user", "content": question}], tokenize=False
+                    system + [{"role": "user", "content": question}], tokenize=False,
+                    add_generation_prompt=True,
                 )
                 prompt = prompt + "\n\n".join(steps_so_far) + "\n\n"
             particles_prompts.append(prompt)
