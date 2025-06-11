@@ -24,14 +24,14 @@
 # # Navigate into the cloned repository directory
 # cd "$REPO_NAME" || { echo "Failed to enter the repository directory"; exit 1; }
 
-# Ensure conda is initialized
-echo "Initializing Conda..."
-eval "$(conda shell.bash hook)" || { echo "Failed to initialize Conda"; exit 1; }
+# Ensure mamba is initialized
+echo "Initializing mamba..."
+eval "$(mamba shell.bash hook)" || { echo "Failed to initialize mamba"; exit 1; }
 
-# Set up the Conda environment
-echo "Setting up Conda environment..."
-conda create -n sal python=3.10 -y || { echo "Failed to create Conda environment"; exit 1; }
-conda activate sal || { echo "Failed to activate Conda environment"; exit 1; }
+# Set up the mamba environment
+echo "Setting up mamba environment..."
+mamba create -n sal python=3.10 -y || { echo "Failed to create mamba environment"; exit 1; }
+mamba activate sal || { echo "Failed to activate mamba environment"; exit 1; }
 
 # Install the required packages
 echo "Installing required packages..."

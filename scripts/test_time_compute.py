@@ -68,7 +68,7 @@ def main():
 
     # splits = [dataset.select(range(i, i+1)) for i in range(len(dataset))]
 
-    save_steps = 10
+    save_steps = 5
     splits = [dataset.select(range(i, i+save_steps)) for i in range(0, len(dataset), save_steps)]
 
     # print number of splits and length of each split
