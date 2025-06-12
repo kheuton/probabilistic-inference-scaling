@@ -41,7 +41,7 @@ class Config:
     # Dataset Related Options
     dataset_name: str = "datasets/math500.jsonl"
     dataset_config: str = None
-    dataset_split: str = "test"
+    dataset_split: str = "train"
     dataset_start: int = None
     dataset_end: int = None
     num_samples: int = None
