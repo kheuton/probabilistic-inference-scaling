@@ -80,7 +80,7 @@ def main():
         print("Processing batch:", i)
         dataset = dataset.map(
             approach_fn,
-            batched=False,
+            batched=True,
             batch_size=1,
             fn_kwargs={"config": config, "llm": llm, "prm": prm},
             desc="Running search",
@@ -88,7 +88,7 @@ def main():
         )
         
         dataset.to_json(f"{config.output_dir}/batch_{i}.jsonl", orient="records", lines=True)
-    # save_dataset(dataset, config)
+    save_dataset(dataset, config)
     logger.info("Done 🔥!")
 
 

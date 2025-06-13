@@ -24,6 +24,8 @@ from sal.utils.score import aggregate_scores
 def best_of_n(x, config: Config, llm: LLM, prm: PRM):
     tokenizer = llm.get_tokenizer()
 
+    print(f"Using model {config.model_path} with tokenizer {tokenizer}")
+
     convs = [
         [
             {"role": "system", "content": config.system_prompt},
@@ -56,10 +58,12 @@ def best_of_n(x, config: Config, llm: LLM, prm: PRM):
         n=1,  # Since we've already duplicated the prompt_token_ids, we only need to generate 1 completion per prompt
     )
 
+    print(f"Templated conversation: {templated_convs[0]}")
+
     responses = llm.generate(
         templated_convs,
         sampling_params=sampling_params,
-        use_tqdm=False,
+        use_tqdm=True,
     )
     if len(responses) != len(x["problem"]) * config.n:
         raise ValueError(

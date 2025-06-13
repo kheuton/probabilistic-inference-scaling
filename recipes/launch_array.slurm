@@ -31,7 +31,13 @@ INPUT_FILE=${INPUT_FILES[$SLURM_ARRAY_TASK_ID-1]}
 DATASET_START=${STARTS[$SLURM_ARRAY_TASK_ID-1]}
 DATASET_END=$((${STARTS[$SLURM_ARRAY_TASK_ID-1]}+$STEP))
 
+# Create a unique output directory using the date and SLURM_ARRAY_TASK_ID
+DATE_STR=$(date +%Y%m%d_%H%M%S)
+OUTPUT_DIR="outputs/${DATE_STR}_task${SLURM_ARRAY_TASK_ID}"
+mkdir -p "$OUTPUT_DIR"
+
 python scripts/test_time_compute.py "$@" \
     --dataset_start=$DATASET_START \
     --dataset_end=$DATASET_END \
-    --push_to_hub=True
+    --push_to_hub=True \
+    --output_dir="$OUTPUT_DIR"
